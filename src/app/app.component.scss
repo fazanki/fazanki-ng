@@ -1,0 +1,81 @@
+
+// TODO add to external variable file
+$darkGray: #222;
+$white: #fff;
+$black: #000;
+//
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  float: left;
+}
+
+// TODO add this to layout file
+.container {
+  color: $white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.flex-column {
+  -webkit-flex: 1;
+  flex: 1;
+  color: $black;
+  padding: 20px;
+}
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+}
+header {
+  background: $darkGray;
+  color: $white;
+  padding: 20px
+}
+nav {
+  width: 150px;
+  border-right: 1px solid $darkGray;
+  height: calc(100vh - 78px);
+}
+// TODO add this to components/_spinner.scss
+.spinner {
+  float: left;
+  margin-left: 10px;
+  svg {
+    width: 30px !important;
+    height: 30px !important;
+
+  }
+}
+
+.mat-spinner {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.mat-spinner circle {
+  stroke: $black;
+}
+// TODO add this to components/_mat-list.scss
+.mat-list {
+  clear: both;
+  margin-left: -15px;
+
+  .mat-list-item {
+    .mat-list-item-content {
+      padding: 0 0 0 16px !important; // TODO revisit
+    }
+
+    .mat-list-item-content {
+      padding: 0 0 0 16px !important;
+    }
+  }
+}
+//
+mat-table {
+  clear: both;
+}
+
+

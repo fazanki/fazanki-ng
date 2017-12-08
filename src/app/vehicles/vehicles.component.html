@@ -1,0 +1,9 @@
+<h2>Vehicles</h2>
+<div class="spinner">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<mat-list>
+  <mat-list-item *ngFor="let vehicle of vehicles">
+    {{vehicle.name}}
+  </mat-list-item>
+</mat-list>

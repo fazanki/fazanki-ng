@@ -1,0 +1,7 @@
+<mat-list>
+  <mat-list-item *ngFor="let navItem of navItems" routerLinkActive="router-link-active">
+    <a mat-button *ngIf="navItem.routerLink" [routerLink]="[navItem.routerLink] ">
+      {{navItem.label}}
+    </a>
+  </mat-list-item>
+</mat-list>

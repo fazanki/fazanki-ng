@@ -1,0 +1,9 @@
+<h2>Species</h2>
+<div class="spinner">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<mat-list>
+  <mat-list-item *ngFor="let specie of species">
+    {{specie.name}}
+  </mat-list-item>
+</mat-list>

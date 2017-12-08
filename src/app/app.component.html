@@ -1,0 +1,16 @@
+<div class="container">
+  <header>
+    <h1>Star Wars Info</h1>
+  </header>
+  <div class="flex-container">
+    <nav>
+      <app-primary-nav [navItems]="navItems"></app-primary-nav>
+    </nav>
+    <div class="flex-column">
+      <section>
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  </div>
+</div>
+
