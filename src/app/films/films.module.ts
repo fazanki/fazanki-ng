@@ -7,6 +7,10 @@ import {FilmsActions} from './shared/actions/films.actions';
 import {StarWarsService} from '../shared/porviders/star-wars.service';
 import {MatListModule, MatProgressSpinnerModule, MatTableModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../../environments/environment';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireAuthModule} from 'angularfire2/auth';
 
 
 @NgModule({
@@ -18,7 +22,10 @@ import {HttpClientModule} from '@angular/common/http';
     MatProgressSpinnerModule,
     MatListModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    AngularFireModule.initializeApp(environment.firebase),  // TODO move
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   declarations: [
     FilmsComponent
@@ -28,7 +35,7 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   providers: [
     FilmsActions,
-    StarWarsService
+    StarWarsService,
   ]
 })
 export class FilmsModule {

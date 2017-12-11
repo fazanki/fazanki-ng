@@ -7,6 +7,10 @@ import {FilmsModel} from './shared/models/films.model';
 import {formatDateTime} from '../shared/helper';
 import {MatTableDataSource} from '@angular/material';
 import {FilmTableElement} from './shared/models/films-table-elements.model';
+import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
+
+// TODO move
+export interface Item { name: string; }
 
 @Component({
   selector: 'app-films',
@@ -18,7 +22,15 @@ export class FilmsComponent implements OnInit {
   @select([ 'films', 'films' ]) films$: Observable<List<FilmsModel>>;
   films: FilmsModel[];
   isLoading: boolean;
-  constructor(private filmsActions: FilmsActions) {}
+
+  // TODO move
+  private itemsCollection: AngularFirestoreCollection<Item>;
+  items: Observable<Item[]>;
+  //
+
+  constructor(
+    private afs: AngularFirestore,
+    private filmsActions: FilmsActions) {}
 
   displayedColumns = ['title', 'producer', 'director', 'release_date'];
   dataSource: MatTableDataSource<FilmTableElement>;
@@ -27,11 +39,16 @@ export class FilmsComponent implements OnInit {
     this.isLoading = true;
     this.films = [];
     this.initFilms();
+
+    // TODO move
+    this.itemsCollection = this.afs.collection<Item>('items');
+    this.items = this.itemsCollection.valueChanges();
   }
 
   initFilms() {
     this.filmsActions.getFilms();
     this.films$.map((films: List<any>) =>  films.toJS())
+
       .subscribe(films => {
         films.map(film => Object.assign(film,  {release_date: formatDateTime(film.release_date)} ));
         this.dataSource = new MatTableDataSource<FilmTableElement>(films);

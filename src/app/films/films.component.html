@@ -1,4 +1,9 @@
 <h2>Films</h2>
+// TODO this is just a place holder
+<li class="text" *ngFor="let item of items | async">
+  {{item.name}}
+</li>
+
 <div class="spinner">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
 </div>
